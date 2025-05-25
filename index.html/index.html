@@ -1518,7 +1518,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
   // API Configuration
   const CONFIG = {
     API_URL: 'http://localhost:3000', // Development backend URL
-    // API_URL: 'https://granava-backend.herokuapp.com', // Production backend URL (uncomment when deploying)
+    // API_URL: 'https://v0-server-setup-dun.vercel.app/', // Production backend URL (uncomment when deploying)
     COMPANY_NAME: 'Granava'
   };
 </script>
@@ -1648,7 +1648,8 @@ document.getElementById('contactForm').addEventListener('submit', async function
                     };
                     
                     try {
-                        const response = await fetch(`${API_URL}/bookings`, {
+                        const response = await fetch(`${API_URL}/bookings`, {fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/hello`)
+
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
