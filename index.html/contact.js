@@ -3,7 +3,7 @@ const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
 
 // In-memory database (replace with a real database in production)
-const contactMessages = [];
+const Contact = [mongoose.model("Contact", contactSchema];
 
 // Send contact message
 router.post('/', (req, res) => {
