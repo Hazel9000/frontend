@@ -1197,6 +1197,7 @@
                 </div>
                 <div class="contact-form">
                     <form id="contactForm">
+                       <form action="/api/contact" method="POST">
                         <div class="form-group">
                             <label for="contactName">Name</label>
                             <input type="text" id="contactName" required>
@@ -1344,7 +1345,7 @@
                 <button class="modal-close" data-modal="registerModal">&times;</button>
             </div>
             <div class="modal-body">
-                <form id="registerForm">
+                <form id="registerForm" action="https://v0-server-setup-dun.vercel.app/api/register" method="POST"> 
                     <div class="form-group">
                         <label for="registerName">Full Name</label>
                         <input type="text" id="registerName" required>
