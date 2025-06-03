@@ -4,7 +4,7 @@ const { v4: uuidv4 } = require('uuid');
 const { users } = require('./auth');
 
 // In-memory database (replace with a real database in production)
-const booking = [mongoose.model("Bookings", booking schema)];
+const booking = [mongoose.model("Bookings", bookingSchema)];
 
 // Create new booking
 router.post('/', (req, res) => {
