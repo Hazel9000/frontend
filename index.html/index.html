@@ -1345,7 +1345,8 @@
                 <button class="modal-close" data-modal="registerModal">&times;</button>
             </div>
             <div class="modal-body">
-               <div class="form-group">
+              <form id="registerForm">
+                <div class="form-group">
                         <label for="registerName">Full Name</label>
                         <input type="text" id="registerName" required>
                     </div>
@@ -1731,7 +1732,7 @@
                 document.getElementById(modalId).classList.remove('active');
             }
 
-            showToast(message, type = 'success') {
+             function showToast(message, type = 'success') {
                 const toastContainer = document.getElementById('toastContainer');
                 const toast = document.createElement('div');
                 toast.className = `toast ${type}`;
