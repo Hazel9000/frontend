@@ -1300,8 +1300,7 @@
                     <p>Subscribe to our newsletter for the latest updates and offers.</p>
                     <form class="newsletter-form">
                         <input type="email" placeholder="Your Email" required>
-                        <button type="submit">Subscribe</button>
-                    </form>
+                        <button type="submit">Subscribe</button
                 </div>
             </div>
             <div class="footer-bottom">
@@ -1318,6 +1317,7 @@
                 <button class="modal-close" data-modal="loginModal">&times;</button>
             </div>
             <div class="modal-body">
+               </form>
                 <form id="loginForm">
                     <div class="form-group">
                         <label for="loginEmail">Email</label>
@@ -1344,30 +1344,37 @@
                 <button class="modal-close" data-modal="registerModal">&times;</button>
             </div>
             <div class="modal-body">
+              </form>  
                 <form id="registerForm">
                     <div class="form-group">
                         <label for="registerName">Full Name</label>
-                        <input type="text" id="registerName" required>
+                        <input type="text" 
+                    id="registerName" name="name"required>
                     </div>
                     <div class="form-group">
                         <label for="registerEmail">Email</label>
-                        <input type="email" id="registerEmail" required>
+                        <input type="email" 
+                            id="registerEmail" name="email"required>
                     </div>
                     <div class="form-group">
                         <label for="registerPhone">Phone</label>
-                        <input type="tel" id="registerPhone" required>
+                        <input type="tel" 
+                            id="registerPhone" name="phone"required>
                     </div>
                     <div class="form-group">
                         <label for="registerCompany">Company (Optional)</label>
-                        <input type="text" id="registerCompany">
+                        <input type="text" 
+                            id="registerCompany" name"company">
                     </div>
                     <div class="form-group">
                         <label for="registerPassword">Password</label>
-                        <input type="password" id="registerPassword" required>
+                        <input type="password" 
+                            id="registerPassword" name="password"required>
                     </div>
                     <div class="form-group">
                         <label for="registerConfirm">Confirm Password</label>
-                        <input type="password" id="registerConfirm" required>
+                        <input type="password" 
+                            id="registerConfirm" name="confirm"required>
                     </div>
                     <button type="submit" class="btn btn-primary" style="width: 100%;">Register</button>
                 </form>
@@ -1391,7 +1398,7 @@
    <script>
   // API Configuration
   const CONFIG = {
-    API_URL: 'https://frontend-indol-ten-75.vercel.app/', // Development backend URL
+    API_URL: 'https://v0-server-setup-dun.vercel.app/api', // Development backend URL
     // API_URL: 'https://v0-server-setup-dun.vercel.app/', // Production backend URL (uncomment when deploying)
     COMPANY_NAME: 'Granava'
   };
@@ -1418,13 +1425,16 @@
                 }
             }
 
-            initEventListeners() {
-                // Authentication
-                document.getElementById('loginForm').addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    const email = document.getElementById('loginEmail').value;
+            initEventListeners
+               document.addEventListener("DOMContentLoaded", function() {
+              document.getElementById('loginForm');
+        
+        loginForm.addEventListener('submit', async function(event) {
+                    event.preventDefault(); //prevent form from submitting normally
+                   
+            const email = document.getElementById('loginEmail').value;
                     const password = document.getElementById('loginPassword').value;
-                    
+        }  
                     try {
                         const response = await fetch(`${API_URL}/login`, {
                             method: 'POST',
@@ -1452,29 +1462,34 @@
                     }
                 });
 
-                document.getElementById('registerForm').addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    const userData = {
+                document.getElementById('registerForm');
+                
+        registerForm.addEventListener('submit', async function(event) {
+                    event.preventDefault(); //prevent form from submitting normally
+
+                    //Get form data
+                const formData = {
                         name: document.getElementById('registerName').value,
                         email: document.getElementById('registerEmail').value,
                         phone: document.getElementById('registerPhone').value,
                         company: document.getElementById('registerCompany').value,
                         password: document.getElementById('registerPassword').value
-                    };
-                    const confirmPassword = document.getElementById('registerConfirm').value;
-                    
-                    if (userData.password !== confirmPassword) {
+                  
+                 const confirmPassword = document.getElementById('registerConfirm').value
+        };
+             //   // Example: check if passwords match      
+                    if (formData.password !== confirmPassword) {
                         this.showToast('Passwords do not match', 'error');
                         return;
                     }
                     
-                    try {
-                        const response = await fetch(`${API_URL}/register`, {
+                  try {
+                        const response = await fetch(`{API_URL}/register`, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
                             },
-                            body: JSON.stringify(userData)
+                            body: JSON.stringify(formData)
                         });
                         
                         const result = await response.json();
@@ -1645,7 +1660,7 @@
                 if (!this.currentUser) return;
                 
                 try {
-                    const response = await fetch(`${API_URL}/bookings/user/${this.currentUser.id}`);
+                    const response = await fetch(`{API_URL}/bookings/user/${this.currentUser.id}`);
                     const bookings = await response.json();
                     
                     const tableBody = document.getElementById('bookingsTableBody');
@@ -1754,7 +1769,7 @@
                 
                 setTimeout(() => {
                     toast.remove();
-                }, 5000);
+                }, 4000);
             }
 
             initMap() {
