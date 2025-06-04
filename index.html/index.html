@@ -1470,7 +1470,7 @@
                     }
                     
                     try {
-                        const response = await fetch(`${API_URL}/api/register`, { ... })
+                        const response = await fetch(`${API_URL}/api/register`, { 
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -1521,7 +1521,7 @@
                     };
                     
                     try {
-                        const response = await fetch(`${API_URL}/bookings`, { ... })
+                        const response = await fetch(`${API_URL}/bookings`, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
